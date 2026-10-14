@@ -1,0 +1,53 @@
+[package]
+authors = ["e4ac"]
+categories = ["rust-patterns", "data-structures"]
+description = "Domain-Driven Design library"
+edition = "2024"
+keywords = ["ddd", "domain-driven-design", "architecture", "patterns"]
+license = "MIT"
+name = "ddd"
+readme = "README.md"
+repository = "https://github.com/e4ac/ddd"
+version = "0.1.0"
+
+[dependencies]
+serde = { default-features = false, features = ["derive"], optional = true, version = "1.0" }
+thiserror = { default-features = false, version = "2.0" }
+
+[dev-dependencies]
+serde_json = { version = "1.0" }
+
+[features]
+default = ["std"]
+serde = ["dep:serde"]
+std = ["serde?/std", "thiserror/std"]
+
+[lints.clippy]
+cargo = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+
+dbg_macro = "warn"
+exit = "warn"
+expect_used = "warn"
+indexing_slicing = "warn"
+missing_errors_doc = "allow"
+multiple_crate_versions = "allow"
+panic = "warn"
+ref_patterns = "warn"
+rest_pat_in_fully_bound_structs = "warn"
+str_to_string = "warn"
+string_slice = "warn"
+todo = "warn"
+try_err = "warn"
+unchecked_time_subtraction = "warn"
+undocumented_unsafe_blocks = "warn"
+unimplemented = "warn"
+unreachable = "warn"
+unwrap_in_result = "warn"
+unwrap_used = "warn"
+
+[profile.release]
+codegen-units = 1
+lto = true
+strip = "symbols"
